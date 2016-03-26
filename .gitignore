@@ -7,3 +7,6 @@ Icon
 
 # Ignore bundler config
 /.bundle
+
+log
+log/**
