@@ -12,6 +12,10 @@
 
 class User < ActiveRecord::Base
 
+  # associations
+  has_many :attendances
+  has_many :events, through: :attendances
+
   # validations
   validates :name, presence: true, length: { in: 2..255 }
   validates :email, presence: true, email: true, uniqueness: true, length: { maximum: 255 }

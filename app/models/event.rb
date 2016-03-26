@@ -12,6 +12,10 @@
 
 class Event < ActiveRecord::Base
 
+  # associations
+  has_many :attendances
+  has_many :users, through: :attendances
+
   # validations
   validates :title, presence: true, length: { in: 2..255 }
   validates_datetime :date
