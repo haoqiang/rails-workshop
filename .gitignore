@@ -9,8 +9,7 @@ Icon
 /.bundle
 
 log
-log/**
-
-cache
 
 tmp
+
+.idea
