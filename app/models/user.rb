@@ -22,10 +22,10 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { in: 6..40 }
 
   def managed_events
-	events.where('attendances.user_type' => 'ADMIN')
+    events.where('attendances.user_type' => 'ADMIN')
   end
 
   def joined_events
-	events.where('attendances.has_attended' => true, 'attendances.user_type' => 'STUDENT')
+    events.where('attendances.user_type' => 'STUDENT')
   end
 end
