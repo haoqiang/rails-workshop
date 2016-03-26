@@ -13,6 +13,8 @@
 
 class Attendance < ActiveRecord::Base
 
+  VALID_USER_TYPE = %w(ADMIN STUDENT)
+
   # associations
   belongs_to :user
   belongs_to :event
