@@ -11,4 +11,8 @@
 #
 
 class Event < ActiveRecord::Base
+
+  # validations
+  validates :title, presence: true, length: { in: 2..255 }
+  validates_datetime :date
 end

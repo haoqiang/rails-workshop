@@ -14,4 +14,8 @@
 class Attendance < ActiveRecord::Base
   belongs_to :user
   belongs_to :event
+
+  # validations
+  validates :has_attended, inclusion: { in: [true, false] }
+  validates :user_type, inclusion: { in: VALID_USER_TYPE }, presence: true
 end
