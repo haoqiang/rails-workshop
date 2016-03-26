@@ -1,0 +1,9 @@
+# OSX files
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Ignore bundler config
+/.bundle
