@@ -11,7 +11,7 @@
 #
 
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :update_attendance, :destroy]
 
   # GET /events
   def index
@@ -20,6 +20,21 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
+  end
+
+  def update_attendance
+    attended_hash = params[:attendance]
+    @event.attendances.each do |attendance|
+      has_attended = attended_hash.key?(attendance.id.to_s)
+      if has_attended != attendance.has_attended
+        if has_attended
+          attendance.update(has_attended: true)
+        else
+          attendance.update(has_attended: false)
+        end
+      end
+    end
+    redirect_to @event, notice: 'Event was successfully updated.'
   end
 
   # GET /events/new

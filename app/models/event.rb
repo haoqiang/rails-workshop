@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
     users.where('attendances.user_type' => 'ADMIN')
   end
 
-  def students
+  def student_attendances
     attendances.where(user_type: 'STUDENT')
   end
 
