@@ -10,6 +10,10 @@ gem 'jquery-rails'
 gem 'bootstrap'
 gem 'turbolinks'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-tether', '>= 1.1.0'
+end
+
 gem 'will_paginate'
 gem 'simple_form'
 

@@ -1,28 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<div class="jumbotron">
+    <p>
+      <strong>Title:</strong>
+      <%= @event.title %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @event.description %>
+    </p>
 
-<p>
-  <strong>Date:</strong>
-  <%= @event.date %>
-</p>
+    <p>
+      <strong>Date:</strong>
+      <%= @event.date %>
+    </p>
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+    <div class="pull-xs-right">
+        <%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-primary' %>
+    </div>
+</div>
 
-<hr>
 
-<h1>Admin</h1>
+<h3>Admin</h3>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>
@@ -41,12 +43,11 @@
   </tbody>
 </table>
 
-<hr>
 
-<h1>Attendance</h1>
+<h3>Attendance</h3>
 
 <%= form_tag("/events/#{@event.id}/update_attendance") do |f| %>
-    <table>
+    <table class="table">
       <thead>
         <tr>
           <th>Name</th>
@@ -66,7 +67,7 @@
         <% end %>
       </tbody>
     </table>
-    <div class="actions">
-        <%= submit_tag("Update attendance") %>
+    <div class="actions pull-xs-right">
+        <%= submit_tag("Update attendance", class: 'btn btn-primary') %>
     </div>
 <% end %>
