@@ -17,3 +17,56 @@
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
+
+<hr>
+
+<h1>Admin</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @event.admin_users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<hr>
+
+<h1>Attendance</h1>
+
+<%= form_tag("/events/#{@event.id}/update_attendance") do |f| %>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Attended</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @event.student_attendances.each do |attendance| %>
+          <tr>
+            <td><%= attendance.user.name %></td>
+            <td><%= attendance.user.email %></td>
+            <td><%= check_box_tag("attendance[#{attendance.id}]", "true", attendance.has_attended) %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="actions">
+        <%= submit_tag("Update attendance") %>
+    </div>
+<% end %>

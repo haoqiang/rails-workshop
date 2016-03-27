@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :events
+  resources :events do
+    member do
+      post 'update_attendance'
+    end
+  end
   resources :users do
     collection do
       post 'login'
