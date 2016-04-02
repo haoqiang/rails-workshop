@@ -158,6 +158,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  autoprefixer-rails
   bootstrap
   email_validator
   jquery-rails
