@@ -29,8 +29,8 @@ class Event < ActiveRecord::Base
   end
 
   def attendance_rate
-    total_attendance = students.count
-    actual_attendance = students.where(has_attended: true).count
-    [actual_attendance, total_attendance]
+    total_attendance = student_attendances.count
+    actual_attendance = student_attendances.where(has_attended: true).count
+    "#{actual_attendance} out of #{total_attendance}"
   end
 end

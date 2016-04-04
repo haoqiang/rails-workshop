@@ -11,25 +11,11 @@
 #
 
 class UsersController < ApplicationController
-  before_action :find_current_user, only: [:index, :show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
   def index
-    if @user.present?
-      redirect_to @user
-    end
-  end
-
-  def login
-    if @user.blank?
-      current_user = User.find_by(email: params[:email], password: params[:password])
-      if current_user.present?
-        session[:current_user_id] = current_user.id
-        redirect_to current_user
-      else
-        redirect_to users_url, notice: 'User not exist.'
-      end
-    end
+    @users = User.all
   end
 
   # GET /users/1
@@ -72,18 +58,13 @@ class UsersController < ApplicationController
   end
 
   private
-
-  # Use callbacks to share common setup or constraints between actions.
-  def find_current_user
-    if session[:current_user_id]
-      @user = User.find_by(id: session[:current_user_id])
-    else
-      @user = nil
+    # Use callbacks to share common setup or constraints between actions.
+    def set_user
+      @user = User.find(params[:id])
     end
-  end
 
-  # Only allow a trusted parameter "white list" through.
-  def user_params
-    params.require(:user).permit(:name, :email, :password)
-  end
+    # Only allow a trusted parameter "white list" through.
+    def user_params
+      params.require(:user).permit(:name, :email, :password)
+    end
 end

@@ -1,14 +1,12 @@
 Rails.application.routes.draw do
+  root 'events#index'
+  resources :attendances
   resources :events do
     member do
       post 'update_attendance'
     end
   end
-  resources :users do
-    collection do
-      post 'login'
-    end
-  end
+  resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

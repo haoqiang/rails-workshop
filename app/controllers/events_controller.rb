@@ -11,7 +11,7 @@
 #
 
 class EventsController < ApplicationController
-  before_action :set_event, only: [:show, :edit, :update, :update_attendance, :destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy, :update_attendance]
 
   # GET /events
   def index
@@ -20,8 +20,8 @@ class EventsController < ApplicationController
 
   # GET /events/1
   def show
-  end
-
+  end  
+  
   def update_attendance
     attended_hash = params[:attendance]
     @event.attendances.each do |attendance|
@@ -73,14 +73,13 @@ class EventsController < ApplicationController
   end
 
   private
-  
-  # Use callbacks to share common setup or constraints between actions.
-  def set_event
-    @event = Event.find(params[:id])
-  end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_event
+      @event = Event.find(params[:id])
+    end
 
-  # Only allow a trusted parameter "white list" through.
-  def event_params
-    params.require(:event).permit(:title, :description, :date)
-  end
+    # Only allow a trusted parameter "white list" through.
+    def event_params
+      params.require(:event).permit(:title, :description, :date)
+    end
 end
