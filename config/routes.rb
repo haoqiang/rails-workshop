@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
   resources :events do
     member do
       post 'update_attendance'
@@ -9,6 +11,8 @@ Rails.application.routes.draw do
       post 'login'
     end
   end
+
+  resources :attendances
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
